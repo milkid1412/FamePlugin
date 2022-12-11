@@ -1,0 +1,5 @@
+name: FamePlugin
+author: Kkevin14
+main: Kkevin14\FamePlugin\Main
+api: 4.0.0
+version: ALPHA-1.0.9
