@@ -17,6 +17,18 @@ class Main extends PluginBase
 
     public string $title = '§l§7[ §f인기도 §7]';
 
+    private static ?self $instance = null;
+
+    public function onLoad(): void
+    {
+        self::$instance = $this;
+    }
+
+    public static function getInstance(): ?self
+    {
+        return self::$instance;
+    }
+
     protected function onEnable(): void
     {
         $this->database = new Config($this->getDataFolder() . 'data.yml', Config::YAML, [
@@ -56,7 +68,8 @@ class Main extends PluginBase
     }
 
     /**
-     * to dev: this method is getting "used_fame_count", not "usable_fame_count". to get "left fame count", use 'getFameLeftCount()' method.
+     * to dev: this method is getting "used_fame_count", not "usable_fame_count".
+     * if you want to get "left fame count", use 'getFameLeftCount()' method.
      */
     public function getFameCount(Player|string $player): int
     {
@@ -107,7 +120,7 @@ class Main extends PluginBase
         $player->sendMessage('§b◈ §f' . $msg);
     }
 
-    public function getPlayerByPrefix(string $key): array
+    public function getPlayersByPrefix(string $key): array
     {
         $players = [];
         foreach($this->getServer()->getOnlinePlayers() as $player){
