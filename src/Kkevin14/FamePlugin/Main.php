@@ -107,7 +107,7 @@ class Main extends PluginBase
         $player->sendMessage('§b◈ §f' . $msg);
     }
 
-    public function getPlayerByPrefix(string $key): array
+    public function getPlayersByPrefix(string $key): array
     {
         $players = [];
         foreach($this->getServer()->getOnlinePlayers() as $player){
